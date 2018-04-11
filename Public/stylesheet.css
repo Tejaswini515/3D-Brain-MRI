@@ -1,0 +1,71 @@
+html,body{
+		background-color: #515A5A; 
+}
+.header-container {
+  color: #000000;
+  background-color: #515A5A; 
+  display: flex;
+  justify-content: center;
+}
+
+.body-container{
+	height:550px;
+	display: flex;
+}
+
+.buttonClass{
+	background-color: #515A5A;	
+	border: 2px;
+	border-style: solid;
+	border-color: #212F3C;
+	display:flex;
+	flex:1;
+	flex-direction:column;
+	align-items: center;
+	margin:10px;
+}
+
+.select-buttons{
+	display:flex;
+	flex-direction:column;
+}
+
+.rotate-buttons{
+	display:flex;
+	flex-direction:column;
+}
+	
+.reset{
+	display:flex;
+	flex-direction:column;
+}
+	
+.canvasClass{
+	background-color: #000000;
+	border: 2px;
+	border-style: solid;
+    border-color: #ffffff;
+	display: flex;
+	flex:6;
+}
+
+#renderCanvas{
+	flex:1;
+}
+
+.ribbonClass{
+	background-color: #515A5A;   /*violet*/
+	border: 2px;
+	border-style: solid;
+    border-color: #212F3C;
+	display:flex;
+	flex:1;
+	flex-direction:column;
+	align-items: center;
+	margin:10px;
+}
+
+
+
+
+

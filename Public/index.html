@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="view-port" content="width=device-width,initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="manifest" href="./manifest.json">
+	<link rel="stylesheet" href="./stylesheet.css">
+
+    <title>Brain MRI</title>
+
+    <script src="dat.gui.min.js"></script>
+    <script src="babylon.js"></script>
+	
+</head>
+<body>
+
+<div class="main">
+    <div class='header-container'>
+        <h3 id='title'>BRAIN MRI</h3>
+    </div>
+	
+
+	<div class="body-container">
+
+		<div class="buttonClass">
+			
+				<div class="select-buttons">
+					<h4>Select Individual Planes</h4>
+					<button onClick="sag_zoom()">Saggital</button>
+					<button onClick="axial_zoom()">Axial</button>
+					<button onClick="crl_zoom()">Coronal</button>
+				</div>
+				
+				<div class="rotate-buttons">
+					<h4>Select rotating plane</h4>
+					<button onClick="rotate_sag()">Rotate Saggital</button>
+					<button onClick="rotate_axial()">Rotate Axial</button>
+					<button onClick="rotate_coronal()">Rotate Coronal</button>
+				</div>
+				
+				<div class="reset">
+					<h4>Reset</h4>
+					<button onClick="reset_scene()">Reset</button>
+				</div>
+			
+		</div>
+
+		<div class="canvasClass">
+			<canvas id="renderCanvas" class="subClass"></canvas>
+		</div>
+
+		<div class="ribbonClass">
+			<div class="sag_input">
+				<label>Choose Saggital Number
+				<input type="text" id="sag_num" onChange="sag_img()">
+				<button onClick="first()">first</button>
+				<button onClick="last()">last</button></label>
+				
+			</div>
+			<div class="axial_input">
+				<label>Choose Axial Number
+				<input type="text" id="axial_num" onChange="axial_img()">
+				<button onClick="first1()">first</button>
+				<button onClick="last1()">last</button></label>
+				
+			</div>
+			<div class="coronal_input">
+				<label>Choose Coronal Number
+				<input type="text" id="coronal_num" onChange="coronal_img()">
+				<button onClick="first2()">first</button>
+				<button onClick="last2()">last</button></label>
+				
+			</div>
+			</div>
+			
+		
+		</div>
+		
+
+
+	</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
