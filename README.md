@@ -16,6 +16,6 @@ Then app renders in localhost:8080
 
 ## Screenshot
 
-![Alt text](./src/Images/screenshot.png?raw=true "Brain MRI")
+![Alt text](./public/images/screenshot.png?raw=true "Brain MRI")
 
 
