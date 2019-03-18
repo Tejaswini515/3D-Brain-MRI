@@ -12,77 +12,161 @@
     <script src="babylon.js"></script>
 	
 </head>
-<body>
+<body onload="sag()">
 
 <div class="main">
-    <div class='header-container'>
+
+	<div class='header-container'>
         <h3 id='title'>BRAIN MRI</h3>
     </div>
 	
 
 	<div class="body-container">
 
-		<div class="buttonClass">
-			
-				<div class="select-buttons">
-					<h4>Select Individual Planes</h4>
-					<button onClick="sag_zoom()">Saggital</button>
-					<button onClick="axial_zoom()">Axial</button>
-					<button onClick="crl_zoom()">Coronal</button>
+			<div class="buttonClass">
+					<div class="select-buttons">
+						<h4>Select Planes</h4>
+						<button onclick="sag()">Saggital</button>
+						<button onclick="axial()">Axial</button>
+						<button onclick="coronal()">Coronal</button>
+					</div>
+			</div>
+
+			<div class="canvasClass">
+
+				<div class="renderCanvas">
+					<canvas id="renderCanvas"  ondblclick="zoomCanvas()" tabindex="1" class="renderCanvas"></canvas>
 				</div>
-				
-				<div class="rotate-buttons">
-					<h4>Select rotating plane</h4>
-					<button onClick="rotate_sag()">Rotate Saggital</button>
-					<button onClick="rotate_axial()">Rotate Axial</button>
-					<button onClick="rotate_coronal()">Rotate Coronal</button>
+
+				<div class="sliders">
+						<input type="range" id="sagittal" min="1" max="130" step="1" value="75" onchange="displaySag()">
+						<input type="range" id="axial" min="1" max="53" step="1" value="26" onchange="displayAxial()">
+						<input type="range" id="coronal" min="1" max="143" step="1" value="71" onchange="displayCoronal()">
 				</div>
-				
-				<div class="reset">
-					<h4>Reset</h4>
-					<button onClick="reset_scene()">Reset</button>
+
+				<div class="newCanvas">
+					<canvas id="sagCanvas" tabindex="1" onclick="abc()"></canvas>
+					<canvas id="axialCanvas" tabindex="1" onclick="abc1()"></canvas>
+					<canvas id="coronalCanvas" tabindex="1" onclick="abc2()"></canvas>
 				</div>
-			
-		</div>
 
-		<div class="canvasClass">
-			<canvas id="renderCanvas" class="subClass"></canvas>
-		</div>
+			</div>
 
-		<div class="ribbonClass">
-			<div class="sag_input">
-				<label>Choose Saggital Number
-				<input type="text" id="sag_num" onChange="sag_img()">
-				<button onClick="first()">first</button>
-				<button onClick="last()">last</button></label>
-				
+			<div class="menuClass">
+				<h4>Choose Slice</h4>
+				<input type="text" id="slices" onChange="chooseSlice()">
+				<button onclick="firstPart()">first</button>
+				<button onclick="lastPart()">last</button>
 			</div>
-			<div class="axial_input">
-				<label>Choose Axial Number
-				<input type="text" id="axial_num" onChange="axial_img()">
-				<button onClick="first1()">first</button>
-				<button onClick="last1()">last</button></label>
-				
-			</div>
-			<div class="coronal_input">
-				<label>Choose Coronal Number
-				<input type="text" id="coronal_num" onChange="coronal_img()">
-				<button onClick="first2()">first</button>
-				<button onClick="last2()">last</button></label>
-				
-			</div>
-			</div>
-			
-		
-		</div>
-		
-
-
 	</div>
 
 </div>
 
 <script src="app.js"></script>
 
+<script>
+    var slider0 = document.getElementById("sagittal").value;
+    var slider1 = document.getElementById("axial").value;
+    var slider2 = document.getElementById("coronal").value;
+
+
+    function zoomCanvas()
+	{
+        document.getElementById('renderCanvas').focus();
+        document.getElementById('renderCanvas').addEventListener("keydown",zoom,true);
+	}
+
+    function zoom(e){
+
+        console.log("scaling");
+        if(planes0 == true)
+            p=p0;
+        else if(planes1 == true)
+            p=p1;
+        else if(planes2 == true)
+            p=p2;
+        var size = p.scaling.x;
+
+        if(e.keyCode == 37 && size>1)
+            size = size-0.1;
+        else if(e.keyCode == 39 && size<2)
+            size = size +0.1;
+        p.scaling = new BABYLON.Vector3(size,size,size);
+    }
+
+	
+    function abc() {
+
+        var canvas;
+
+        if(planes0 == true)
+		{
+            canvas = "sagCanvas";
+
+		}
+        else if(planes1 == true)
+		{
+            canvas = "axialCanvas";
+		}
+        else if(planes2 == true)
+		{
+            canvas = "coronalCanvas";
+		}
+
+
+        document.getElementById('sagCanvas').focus();
+        document.getElementById('sagCanvas').addEventListener("keydown",xyz,true);
+
+    }
+
+    function abc(){
+
+        document.getElementById('sagCanvas').focus();
+        document.getElementById('sagCanvas').addEventListener("keydown",xyz,true);
+    }
+
+    function abc1(){
+
+        document.getElementById('axialCanvas').focus();
+        document.getElementById('axialCanvas').addEventListener("keydown",xyz1,true);
+    }
+
+    function abc2(){
+
+        document.getElementById('coronalCanvas').focus();
+        document.getElementById('coronalCanvas').addEventListener("keydown",xyz2,true);
+    }
+
+
+    function xyz(e){
+        if(e.keyCode == 37 && slider0>1)
+            slider0 = slider0 -1;
+        else if(e.keyCode == 39 && slider0<128)
+            slider0 = slider0 +1;
+        document.getElementById('sagittal').value = slider0;
+        console.log("sag:",slider0);
+        displaySag();
+    }
+
+    function xyz1(e){
+        if(e.keyCode == 37 && slider1>1)
+            slider1 = slider1 -1;
+        else if(e.keyCode == 39 && slider1<180)
+            slider1 = slider1 +1;
+        console.log("axial:",slider1);
+        document.getElementById('axial').value = slider1;
+        displayAxial();
+    }
+
+    function xyz2(e){
+        if(e.keyCode == 37 && slider2>1)
+            slider2 = slider2 -1;
+        else if(e.keyCode == 39 && slider2<145)
+            slider2 = slider2 +1;
+        console.log("coronal:",slider2);
+        document.getElementById('coronal').value = slider2;
+        displayCoronal();
+    }
+	</script>
 </body>
 </html>

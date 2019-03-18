@@ -1,11 +1,11 @@
 html,body{
-		background-color: #515A5A; 
+	background-color: #515A5A;
 }
 .header-container {
-  color: #000000;
-  background-color: #515A5A; 
-  display: flex;
-  justify-content: center;
+	color: #000000;
+	background-color: #515A5A;
+	display: flex;
+	justify-content: center;
 }
 
 .body-container{
@@ -14,7 +14,7 @@ html,body{
 }
 
 .buttonClass{
-	background-color: #515A5A;	
+	background-color: #515A5A;
 	border: 2px;
 	border-style: solid;
 	border-color: #212F3C;
@@ -34,30 +34,78 @@ html,body{
 	display:flex;
 	flex-direction:column;
 }
-	
+
 .reset{
 	display:flex;
 	flex-direction:column;
 }
-	
+
 .canvasClass{
 	background-color: #000000;
 	border: 2px;
 	border-style: solid;
-    border-color: #ffffff;
+	border-color: #ffffff;
 	display: flex;
-	flex:6;
+	flex-direction: column;
+	flex:4;
 }
 
-#renderCanvas{
+.renderCanvas{
+	height:250px;
+	width:968px;
+}
+
+.sliders{
+	height:10px;
+	display:flex;
+}
+
+#sagittal{
+	flex: 1;
+}
+
+#axial{
 	flex:1;
 }
 
-.ribbonClass{
+#coronal{
+	flex:1;
+}
+
+.newCanvas{
+	flex:1;
+	display:flex;
+}
+
+#sagCanvas{
+	background-color: #000000;
+	border: 1px;
+	border-style: solid;
+	border-color: #ffffff;
+	flex:1;
+}
+
+#axialCanvas{
+	background-color: #000000;
+	border: 1px;
+	border-style: solid;
+	border-color: #ffffff;
+	flex:1;
+}
+
+#coronalCanvas{
+	background-color: #000000;
+	border: 1px;
+	border-style: solid;
+	border-color: #ffffff;
+	flex: 1;
+}
+
+.menuClass{
 	background-color: #515A5A;   /*violet*/
 	border: 2px;
 	border-style: solid;
-    border-color: #212F3C;
+	border-color: #212F3C;
 	display:flex;
 	flex:1;
 	flex-direction:column;
